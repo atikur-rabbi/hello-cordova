@@ -9,3 +9,7 @@ workflows:
      - npm install
      - cordova platform add android
      - PATH=$PATH:$GRADLE_PATH cordova build android
+    artifacts:
+     - platforms/android/app/build/outputs/apk/release/**/*.apk
+     - platforms/android/app/build/outputs/apk/release/**/*.aab
+     - $FCI_BUILD_DIR/*.zip
