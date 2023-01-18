@@ -1,1 +1,20 @@
+name: Cordova app build
 
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build Cordova app
+      run: cordova build --release
