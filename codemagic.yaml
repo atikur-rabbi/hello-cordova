@@ -47,4 +47,8 @@ workflows:
       google_play:
         credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
         track: internal
+<<<<<<< HEAD
         submit_as_draft: true
+=======
+        submit_as_draft: true
+>>>>>>> fa0e9f3 (up)
