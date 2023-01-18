@@ -3,10 +3,7 @@ workflows:
     name: Ionic Cordova Android Workflow
     max_build_duration: 120
     environment:
-      android_signing:
-        - keystore_reference
-      groups:
-        - google_play
+
       vars:
         PACKAGE_NAME: "io.codemagic.ionicsample"
         GOOGLE_PLAY_TRACK: alpha
