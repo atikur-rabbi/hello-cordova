@@ -36,19 +36,3 @@ workflows:
 
     artifacts:
       - platforms/android/app/build/outputs/**/*.apk
-    publishing:
-      email:
-        recipients:
-          - user_1@example.com
-          - user_2@example.com
-        notify:
-          success: true
-          failure: false
-      google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-        track: internal
-<<<<<<< HEAD
-        submit_as_draft: true
-=======
-        submit_as_draft: true
->>>>>>> fa0e9f3 (up)
