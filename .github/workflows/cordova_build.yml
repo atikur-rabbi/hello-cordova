@@ -13,11 +13,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: npm install -g cordova
-    
-    - name: Install dependencies
-      run: cordova platform add android
-
-    - name: Build Cordova app
-      run: cordova build --release
+    - name: Use oxr463/setup-cordova
+      uses: oxr463/setup-cordova@0.0.3
+      with:
+        exec: |
+          cordova platform add android && \
+          cordova build --no-telemetry && \
+          cp "$(find . -name '*.apk')" .
