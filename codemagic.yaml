@@ -1,35 +1,25 @@
 workflows:
-  android-workflow:
-    name: Ionic Cordova Android Workflow
-    max_build_duration: 120
-    environment:
-
-      vars:
-        PACKAGE_NAME: "io.codemagic.ionicsample"
-        GOOGLE_PLAY_TRACK: alpha
-      node: latest
+  my-workflow:
     scripts:
-      - name: Install npm dependencies and update Cordova version
-        script: | 
-          npm install
-          npm ci # equivalent of npm install for CI systems.
-            # Requires package-lock.json or npm-shrinkwrap.json to be present
+      - name: Install dependencies
+        script: npm ci
+      - name: Switch to a specific version of Cordova
+        script: |
+          set -e # exit on first failed command
+          
           cvm install 9.0.0
-          cvm use 9.0.0 
-      - name: Setup Cordova Android platform
-        script: | 
-          ionic cordova platform remove android --nosave
-          ionic cordova platform add android \
-            --confirm \
-            --no-interactive \
-            --noresources 
-      - name: Build Android Cordova App
-        script: | 
-          cordova build android \
-            --release \
-            --no-interactive \
-            --prod \
-            --device
+          cvm use 9.0.0
+      - name: Add Android platform
+        script: |
+          set -e # exit on first failed command
+
+          cordova platform remove android --nosave
+          cordova platform add android --confirm --no-interactive --noresources
+      - name: Build Android release
+        script: |
+          set -e # exit on first failed command
+
+          cordova build android --no-interactive
 
     artifacts:
       - platforms/android/app/build/outputs/**/*.apk
