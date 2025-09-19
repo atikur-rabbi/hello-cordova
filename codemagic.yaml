@@ -7,8 +7,8 @@ workflows:
         script: |
           set -e # exit on first failed command
           
-          cvm install 9.0.0
-          cvm use 9.0.0
+          cvm install 12.0.0
+          cvm use 12.0.0
       - name: Add Android platform
         script: |
           set -e # exit on first failed command
